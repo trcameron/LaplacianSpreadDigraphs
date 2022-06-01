@@ -1,0 +1,59 @@
+\makeatletter
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,graphs,arrows.meta,datavisualization,plotmarks,backgrounds,calc,datavisualization.formats.functions}
+\pgfdeclarelayer{high}
+\pgfsetlayers{background,main,high}
+\newdimen\Spt\newdimen\Lpt
+\Spt=0.85pt\Lpt=0.75pt
+\def\drawGraph#1#2{\begingroup\ifGfxRescale\pgfmathsetmacro{\temp@tscale}{sqrt(scalar(min(\gfxGraphWidth,\gfxGraphHeight)/3.5cm))}\pgfmathsetlength{\Spt}{\the\Spt*\temp@tscale}\pgfmathsetlength{\Lpt}{\the\Lpt*sqrt(\temp@tscale)}\fi\pgfkeys{/stored graphs/#2/.cd,x min/.get=\temp@x@min,x max/.get=\temp@x@max,y min/.get=\temp@y@min,y max/.get=\temp@y@max,/my/graphic options,node size/.get=\temp@node@size,node outline size/.get=\temp@node@outline@size,edge size/.get=\temp@edge@size}\pgfmathsetlengthmacro{\temp@scale}{min((\gfxGraphWidth-\temp@node@size\Spt-\temp@node@outline@size\Lpt)/(\temp@x@max-\temp@x@min),(\gfxGraphHeight-\temp@node@size\Spt-\temp@node@outline@size\Lpt)/(\temp@y@max-\temp@y@min))}\pgfmathsetlengthmacro{\temp@xshift}{\gfxGraphWidth/2}\pgfmathsetlengthmacro{\temp@yshift}{(\gfxGraphHeight)/2}\matrix (graph) at (\temp@xshift,\temp@yshift){\drawGraph@inner{x=\temp@scale,y=\temp@scale,#1}{#2}\\};\endgroup}
+\def\drawGraph@inner#1#2{\begin{scope}[>=Triangle,every node/.style={fill=black!25,draw=black!78,circle,minimum size=\temp@node@size\Spt,line width=\temp@node@outline@size\Lpt,inner sep=0pt},line width=\temp@edge@size\Lpt,#1]\pgfkeys{/stored graphs/#2/graph code}\end{scope}}
+\newif\ifDrawTall\DrawTallfalse
+\newif\ifGfxDebug\GfxDebugfalse
+\newif\ifGfxDebugInner\GfxDebugInnerfalse
+\newif\ifGfxRescale\GfxRescaletrue
+\tikzset{/my/graphic options/.is family,/my/graphic options,tall/.is if=DrawTall,wide/.style={/my/graphic options/tall=false},sep/.initial=0.5cm,rnr ratio/.initial=1,graph width/.initial=3.5cm,graph height/.initial=3.5cm,rnr width/.initial=3.5cm,rnr height/.initial=3.5cm,height/.initial={},width/.initial={},rnr axis options/.style={},x min/.style={/my/graphic options/rnr axis options/.append style={x axis={include value=#1}}},x max/.forward to=/my/graphic options/x min,y min/.style={/my/graphic options/rnr axis options/.append style={y axis={include value=#1}}},y max/.forward to=/my/graphic options/y min,node size/.initial=12,node outline size/.initial=0.6,edge size/.initial=0.75,set scales/.forward to=/tikz/set scales,defaults/.style={},debug/.is if=GfxDebug,debug inner/.is if=GfxDebugInner,rescale sizes/.is if=GfxRescale}
+\def\gfxDoHeight{\pgfkeys{/my/graphic options/height/.get=\temp@height}\ifx\temp@height\empty\else
+ \pgfkeys{/my/graphic options,sep/.get=\temp@sep,rnr ratio/.get=\temp@rnr@ratio}
+ \ifDrawTall
+  \pgfkeys{/my/graphic options,graph height/.evaluated={(\temp@height-\temp@sep)/(1+\temp@rnr@ratio)},rnr height/.evaluated={(\temp@height-\temp@sep)*\temp@rnr@ratio/(1+\temp@rnr@ratio)}}
+ \else
+  \pgfkeys{/my/graphic options,graph height=\temp@height,rnr height=\temp@height}
+ \fi
+\fi}
+\def\gfxDoWidth{\pgfkeys{/my/graphic options/width/.get=\temp@width}\ifx\temp@width\empty\else
+ \pgfkeys{/my/graphic options,width/.get=\temp@width,sep/.get=\temp@sep,rnr ratio/.get=\temp@rnr@ratio}
+ \ifDrawTall
+  \pgfkeys{/my/graphic options,graph width=\temp@width,rnr width=\temp@width}
+ \else
+  \pgfkeys{/my/graphic options,graph width/.evaluated={(\temp@width-\temp@sep)/(1+\temp@rnr@ratio)},rnr width/.evaluated={(\temp@width-\temp@sep)*\temp@rnr@ratio/(1+\temp@rnr@ratio)}}
+ \fi
+\fi}
+\def\GfxHandleSizing{\gfxDoHeight\gfxDoWidth\pgfkeys{/my/graphic options,graph width/.get=\gfxGraphWidth,graph height/.get=\gfxGraphHeight,rnr width/.get=\gfxRnrWidth,rnr height/.get=\gfxRnrHeight,sep/.get=\gfxSep}}
+\tikzset{set scales/.code 2 args={\Spt=#1pt\Lpt=#2pt}}
+\tikzset{draw above/.style={execute at begin scope={\pgfonlayer{high}\let\tikz@options=\pgfutil@empty\tikzset{#1}\tikz@options},execute at end scope={\endpgfonlayer}}}
+\tikzdatavisualizationset{scientific axes/clean lower/.style={
+  /tikz/data visualization/@make axes/.style={
+    x axis={
+      visualize ticks={common={y axis={goto=padded min},direction axis=y axis,high=0pt},major={tick text at low}},
+      visualize axis={y axis={goto=padded min}},
+      visualize grid={common={direction axis=y axis}},
+      padding=6.5\Spt,
+    },
+    y axis={
+      visualize ticks={common={x axis={goto=padded min},direction axis=x axis,high=0pt},major={tick text at low}},
+      visualize axis={x axis={goto=padded min}},
+      visualize grid={common={direction axis=x axis}},
+      padding=6.5\Spt
+    },
+  }
+}}
+\newif\ifDrawEllipse
+\newbox\adjustmentBox
+\setbox\adjustmentBox\hbox{\Spt=0pt\Lpt=0pt\begin{tikzpicture}\datavisualization[scientific axes=clean lower,all axes={ticks={step=1,node style={font=\scriptsize},low=0pt}},every axis/.append style={style={line width=0pt}},every ticks/.append style={style={line width=0pt}},x axis={include value=0,include value=4},y axis={include value=-1,include value=1},scientific axes/width=3.5cm,scientific axes/height=3.5cm];\end{tikzpicture}}\pgfmathsetlengthmacro{\rnrExtraX}{\the\wd\adjustmentBox-3.5cm}\pgfmathsetlengthmacro{\rnrExtraY}{\the\ht\adjustmentBox+\the\dp\adjustmentBox-3.5cm}
+\def\drawRnr#1#2#3{\begingroup\ifGfxRescale\pgfmathsetmacro{\temp@tscale}{sqrt(scalar(min(\gfxRnrWidth,\gfxRnrHeight)/3.5cm))}\pgfmathsetlength{\Spt}{\the\Spt*\temp@tscale}\pgfmathsetlength{\Lpt}{\the\Lpt*sqrt(\temp@tscale)}\fi\pgfmathsetlengthmacro{\temp@added@space}{6.5\Spt+4\Lpt}\ifDrawTall\pgfmathsetlengthmacro{\temp@xshift}{(\gfxGraphWidth-\gfxRnrWidth)/2}\pgfmathsetlengthmacro{\temp@yshift}{-\gfxSep-\gfxRnrHeight}\else\pgfmathsetlengthmacro{\temp@xshift}{\gfxSep+\gfxGraphWidth}\pgfmathsetlengthmacro{\temp@yshift}{(\gfxGraphHeight-\gfxRnrHeight)/2}\fi\pgfmathsetlengthmacro{\temp@xshift}{\temp@xshift+\rnrExtraX+\temp@added@space-3pt}\pgfmathsetlengthmacro{\temp@yshift}{\temp@yshift+\rnrExtraY+\temp@added@space-3pt}\pgfmathsetlengthmacro{\temp@axes@width}{\gfxRnrWidth-\rnrExtraX-\temp@added@space}\pgfmathsetlengthmacro{\temp@axes@height}{\gfxRnrHeight-\rnrExtraY-\temp@added@space}\drawRnr@inner{xshift=\temp@xshift,yshift=\temp@yshift,#1}{/my/graphic options/rnr axis options,scientific axes/height=\temp@axes@height,scientific axes/width=\temp@axes@width,#2}{#3}\endgroup}
+\def\drawRnr@inner#1#2#3{\def\rnrDrawCode{\datavisualization[scientific axes=clean lower,all axes={ticks={step=1,node style={font=\scriptsize},low=-4\Lpt}},visualize as line=rnr,rnr={straight cycle,style={fill=black!25,draw=black,line width=0.8\Lpt,every path/.style={fill, draw}}},visualize as line=ellipse,ellipse={smooth cycle,style={draw above={black,line width=0.8\Lpt}}},visualize as scatter=eigs,eigs={style={draw above={black!62,mark=text,text mark={},text mark as node=true,text mark style={star,fill,draw,line width=1\Lpt,line join=round,star point ratio=2.5,minimum size=7\Lpt,inner sep=0pt},mark options={}}}},every axis/.append style={style={line width=0.55\Lpt,draw=black!90}},every ticks/.append style={style={line width=0.55\Lpt,draw=black!90}},#2] scope[set=rnr] {data[use group=#3-rnr]} data[set=eigs,use group=#3-eig] }\pgfkeysifdefined{/stored graphs/#3/ellipse/x center}{\DrawEllipsetrue}{\DrawEllipsefalse}\ifDrawEllipse\pgfkeys{/stored graphs/#3/ellipse/.cd,x center/.get=\ellipseXCenter,y center/.get=\ellipseYCenter,x radius/.get=\ellipseXRadius,y radius/.get=\ellipseYRadius}\@xp\def\@xp\rnrDrawCode\@xp{\rnrDrawCode data[set=ellipse,format=function] {var t : interval [0:1.96*pi] samples 50; func x = \ellipseXCenter + \ellipseXRadius * cos(\value t r); func y = \ellipseYCenter + \ellipseYRadius * sin(\value t r);}}\fi\@xp\def\@xp\rnrDrawCode\@xp{\rnrDrawCode ;}\begin{scope}[#1]  \rnrDrawCode \end{scope}}
+\def\drawExtra#1{\begin{scope}[draw=black,line width=0.8\Lpt]\pgfkeys{/stored graphs/#1/extra/.try}\end{scope}}
+\def\drawFigure@inner#1#2#3#4#5#6{\begin{tikzpicture}[#6]\begin{scope}[/my/graphic options,defaults,#1]\GfxHandleSizing\ifDrawTall\pgfmathsetlengthmacro{\temp@x@min}{min(0pt,(\gfxGraphWidth-\gfxRnrWidth)/2)}\pgfmathsetlengthmacro{\temp@x@max}{max(\gfxGraphWidth,\gfxRnrWidth+\temp@x@min)}\pgfmathsetlengthmacro{\temp@y@min}{-\gfxSep-\gfxRnrHeight}\pgfmathsetlengthmacro{\temp@y@max}{\gfxGraphHeight}\else\def\temp@x@min{0pt}\pgfmathsetlengthmacro{\temp@x@max}{\gfxGraphWidth+\gfxRnrWidth+\gfxSep}\pgfmathsetlengthmacro{\temp@y@min}{min(0pt,(\gfxGraphHeight-\gfxRnrHeight)/2)}\pgfmathsetlengthmacro{\temp@y@max}{max(\gfxGraphHeight,\gfxRnrHeight+\temp@y@min)}\fi\path[use as bounding box,/utils/exec=\ifGfxDebugInner\pgfkeysalso{draw}\else\pgfkeysalso{clip}\fi] (\temp@x@min,\temp@y@min) rectangle (\temp@x@max,\temp@y@max);\drawGraph{#2}{#5}\drawRnr{#3}{#4}{#5}\end{scope}\end{tikzpicture}}
+\def\drawFigure#1#2{\ifGfxDebug\drawFigure@inner{#2}{}{}{}{#1}{show background rectangle,tight background}\else\drawFigure@inner{#2}{}{}{}{#1}{}\fi}
+

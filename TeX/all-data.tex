@@ -1,0 +1,423 @@
+ % Data for illustrations
+
+\pgfkeys{/stored graphs/5reg-tourn/.cd,
+	x min/.initial=-1,
+	x max/.initial=1,
+	y min/.initial=-1,
+	y max/.initial=1,
+	graph code/.code={
+		\node (v0) at (0,1) {};
+		\node (v1) at (-0.95106,0.3090) {};
+		\node (v2) at (-0.5878,-0.8090) {};
+		\node (v3) at (0.5878,-0.8090) {};
+		\node (v4) at (0.95106,0.3090) {};
+		
+		\graph {
+			(v0); (v1); (v2); (v3); (v4);
+			v0 -> v1;
+			v0 -> v2;
+			v1 -> v2;
+			v1 -> v3;
+			v2 -> v3;
+			v2 -> v4;
+			v3 -> v4;
+			v3 -> v0;
+			v4 -> v0;
+			v4 -> v1;
+		};
+	}
+}
+
+\pgfkeys{/pgf/data/new group=5reg-tourn-rnr}
+\pgfdata[store in group=5reg-tourn-rnr]{
+  x, y
+  2.5, 1.53884177
+  2.5, -1.53884177
+  2.5, 0.36327126
+  2.5, -0.36327126
+}
+
+\pgfkeys{/pgf/data/new group=5reg-tourn-eig}
+\pgfdata[store in group=5reg-tourn-eig]{
+  x, y
+  2.5, 1.53884177
+  2.5, -1.53884177
+  2.5, 0.36327126
+  2.5, -0.36327126
+}
+
+\pgfkeys{/stored graphs/2exp-star/.cd,
+	x min/.initial=-2,
+	x max/.initial=2,
+	y min/.initial=-2,
+	y max/.initial=2,
+	graph code/.code={
+		\node (v0) at (-2,-2) {};
+		\node (v1) at (2,-2) {};
+		\node (v2) at (2,2) {};
+		\node (v3) at (-2,2) {};
+		\node (v4) at (-1,0) {};
+		\node (v5) at (1,0) {};
+		
+		\graph {
+			(v0); (v1); (v2); (v3); (v4); (v5);
+			v4 -> v5;
+			v5 -> v4;
+			v4 -> v0;
+			v5 -> v0;
+			v4 -> v1;
+			v5 -> v1;
+			v4 -> v2;
+			v5 -> v2;
+			v4 -> v3;
+			v5 -> v3;
+		};
+	}
+}
+
+\pgfkeys{/pgf/data/new group=2exp-star-rnr}
+\pgfdata[store in group=2exp-star-rnr]{
+  x, y
+  0, 0
+  0, 0
+  0, 0
+  4, 0
+  6, 0
+}
+
+\pgfkeys{/pgf/data/new group=2exp-star-eig}
+\pgfdata[store in group=2exp-star-eig]{
+  x, y
+  0, 0
+  0, 0
+  0, 0
+  4, 0
+  6, 0
+}
+
+\pgfkeys{/stored graphs/2imp-star/.cd,
+	x min/.initial=-2,
+	x max/.initial=2,
+	y min/.initial=-2,
+	y max/.initial=2,
+	graph code/.code={
+		\node (v0) at (-2,-2) {};
+		\node (v1) at (2,-2) {};
+		\node (v2) at (2,2) {};
+		\node (v3) at (-2,2) {};
+		\node (v4) at (-1,0) {};
+		\node (v5) at (1,0) {};
+		
+		\graph {
+			(v0); (v1); (v2); (v3); (v4); (v5);
+			v4 -> v5;
+			v5 -> v4;
+			v0 -> v4;
+			v0 -> v5;
+			v1 -> v4;
+			v1 -> v5;
+			v2 -> v4;
+			v2 -> v5;
+			v3 -> v4;
+			v3 -> v5;
+		};
+	}
+}
+
+\pgfkeys{/pgf/data/new group=2imp-star-rnr}
+\pgfdata[store in group=2imp-star-rnr]{
+  x, y
+  2, 0
+}
+
+\pgfkeys{/pgf/data/new group=2imp-star-eig}
+\pgfdata[store in group=2imp-star-eig]{
+  x, y
+  2, 0
+}
+
+\pgfkeys{/stored graphs/cycle/.cd,
+  x min/.initial=-0.999999791383765,
+  x max/.initial=1.0,
+  y min/.initial=-0.866025372082436,
+  y max/.initial=0.8660255217554294,
+  graph code/.code={
+    \node (v0) at (-0.999999791383765, -1.0199322869699905e-07) {};
+    \node (v1) at (-0.49999975413086595, -0.866025372082436) {};
+    \node (v2) at (0.4999999627471009, -0.866025372082436) {};
+    \node (v3) at (1.0, 1.6027507366671279e-07) {};
+    \node (v4) at (0.4999996647239081, 0.8660255217554294) {};
+    \node (v5) at (-0.500000081956378, 0.866025164127598) {};
+
+    \graph {
+      (v0); (v1); (v2); (v3); (v4); (v5);
+      v0 -> v1;
+      v1 -> v2;
+      v2 -> v3;
+      v3 -> v4;
+      v4 -> v5;
+      v5 -> v0;
+    };
+  }
+}
+
+\pgfkeys{/pgf/data/new group=cycle-rnr}
+\pgfdata[store in group=cycle-rnr]{
+  x, y
+  0.49999999999999944, -0.8660254037844382
+  1.4999999999999998, -0.8660254037844384
+  2.0000000000000004, 0.0
+  1.4999999999999998, 0.8660254037844384
+  0.49999999999999944, 0.8660254037844382
+}
+
+\pgfkeys{/pgf/data/new group=cycle-eig}
+\pgfdata[store in group=cycle-eig]{
+  x, y
+  0.49999999999999944, 0.8660254037844382
+  0.49999999999999944, -0.8660254037844382
+  2.0000000000000004, 0.0
+  1.4999999999999998, 0.8660254037844384
+  1.4999999999999998, -0.8660254037844384
+}
+
+\pgfkeys{/stored graphs/nrml/.cd,
+  x min/.initial=-1.0,
+  x max/.initial=1.0,
+  y min/.initial=-1.0,
+  y max/.initial=1.0,
+  graph code/.code={
+    \node (v0) at (-1.0, -0.5) {};
+    \node (v1) at (-0.5, -1.0) {};
+    \node (v2) at (1.0, -1.0) {};
+    \node (v3) at (1.0, 0.5) {};
+    \node (v4) at (0.5, 1.0) {};
+    \node (v5) at (-1.0, 1.0) {};
+    \node (v6) at (0.0, 0.0) {};
+
+    \graph {
+      (v0); (v1); (v2); (v3); (v4); (v5); (v6);
+      v0 <-> v6;
+      v0 -> v2;
+      v1 <-> v6;
+      v1 -> v2;
+      v2 -> { v3, v4 };
+      v3 <-> v6;
+      v3 -> v5;
+      v4 <-> v6;
+      v4 -> v5;
+      v5 -> { v0, v1 };
+    };
+  }
+}
+
+\pgfkeys{/pgf/data/new group=nrml-rnr}
+\pgfdata[store in group=nrml-rnr]{
+  x, y
+  1.9999999999999996, 0.0
+  2.0000000000000027, -1.4142135623730956
+  5.414213562373094, 0.0
+  2.0000000000000027, 1.4142135623730956
+}
+
+\pgfkeys{/pgf/data/new group=nrml-eig}
+\pgfdata[store in group=nrml-eig]{
+  x, y
+  1.9999999999999996, 0.0
+  5.414213562373094, 0.0
+  2.0000000000000027, 1.4142135623730956
+  2.0000000000000027, -1.4142135623730956
+  2.585786437626906, 0.0
+  2.0000000000000004, 0.0
+}
+
+\pgfkeys{/stored graphs/rest-nrml/.cd,
+  x min/.initial=-1.0,
+  x max/.initial=0.6854102419673151,
+  y min/.initial=-0.5706339351295915,
+  y max/.initial=0.5706338910600649,
+  graph code/.code={
+    \node (v0) at (0.014589783050400188, 0.5706338910600649) {};
+    \node (v1) at (-0.40000000106687733, -2.7521080106309955e-08) {};
+    \node (v2) at (0.014589844937823521, -0.5706339351295915) {};
+    \node (v3) at (0.6854102419673151, -0.3526711083671352) {};
+    \node (v4) at (0.6854101311113385, 0.35267121440446464) {};
+    \node (v5) at (-1.0, -3.4446722641255056e-08) {};
+
+    \graph {
+      (v0); (v1); (v2); (v3); (v4); (v5);
+      v0 -> { v2, v3, v4, v5 };
+      v1 -> { v0, v3, v4, v5 };
+      v2 -> { v1, v3, v4, v5 };
+      v3 <-> v4;
+    };
+  }
+}
+
+\pgfkeys{/pgf/data/new group=rest-nrml-rnr}
+\pgfdata[store in group=rest-nrml-rnr]{
+  x, y
+  0.0, 0.0
+  4.5, -0.8660254037844388
+  4.5, 0.8660254037844388
+}
+
+\pgfkeys{/pgf/data/new group=rest-nrml-eig}
+\pgfdata[store in group=rest-nrml-eig]{
+  x, y
+  4.5, 0.8660254037844388
+  4.5, -0.8660254037844388
+  0.0, 0.0
+  3.0, 0.0
+  2.0, 0.0
+}
+
+\pgfkeys{/stored graphs/pseu-nrml/.cd,
+  x min/.initial=-1.0,
+  x max/.initial=1.0,
+  y min/.initial=-0.5,
+  y max/.initial=0.5,
+  graph code/.code={
+    \node (v0) at (-1.0, 0.5) {};
+    \node (v1) at (-1.0, -0.5) {};
+    \node (v2) at (1.0, -0.5) {};
+    \node (v3) at (1.0, 0.5) {};
+    \node (v4) at (0.0, -0.5) {};
+    \node (v5) at (0.0, 0.5) {};
+
+    \graph {
+      (v0); (v1); (v2); (v3); (v4); (v5);
+      v0 <-> v1;
+      v0 -> { v4, v5 };
+      v1 -> { v4, v5 };
+      v2 -> v4;
+      v3 -> v5;
+      v4 -> v3;
+      v5 -> v2;
+    };
+  }
+}
+
+\pgfkeys{/pgf/data/new group=pseu-nrml-rnr}
+\pgfdata[store in group=pseu-nrml-rnr]{
+  x, y
+  3.999999999999999, 0.0
+  1.0, -1.0
+  1.0, -0.2620444585260786
+  0.9999999999999999, 0.9999999999999999
+}
+
+\pgfkeys{/pgf/data/new group=pseu-nrml-eig}
+\pgfdata[store in group=pseu-nrml-eig]{
+  x, y
+  3.999999999999999, 0.0
+  1.0000000000000007, 1.0000000000000002
+  1.0000000000000007, -1.0000000000000002
+  2.0000000000000018, 2.9074083778446188e-08
+  2.0000000000000018, -2.9074083778446188e-08
+}
+
+\pgfkeys{/stored graphs/pns3-2/.cd,
+  x min/.initial=-2.0,
+  x max/.initial=2.0,
+  y min/.initial=-1.5,
+  y max/.initial=2.0,
+  graph code/.code={
+    \node (v0) at (1.0, 2.0) {};
+    \node (v1) at (2.0, 1.0) {};
+    \node (v2) at (-2.0, 0.0) {};
+    \node (v3) at (-1.0, 1.0) {};
+    \node (v4) at (0.0, 0.0) {};
+    \node (v5) at (0.5, -1.5) {};
+	\node (v6) at (1.5, -0.5) {};
+
+    \graph {
+      (v0); (v1); (v2); (v3); (v4); (v5); (v6);
+      v0 <-> v1;
+      v0 -> { v2, v3, v4, v5, v6 };
+      v1 -> { v2, v3, v4, v5, v6 };
+      v2 <-> v3;
+	  v3 <-> v4;
+	  v4 <-> v2;
+      v2 -> { v5, v6 };
+	  v3 -> { v5, v6 };
+	  v4 -> { v5, v6 };
+    };
+  },
+  ellipse/.cd,
+  x center/.initial=3.5,
+  y center/.initial=0,
+  x radius/.initial=1.637,
+  y radius/.initial=0.6549
+}
+
+\pgfkeys{/pgf/data/new group=pns3-2-rnr}
+\pgfdata[store in group=pns3-2-rnr]{
+  x, y
+  0.0, 0.0
+  3.5, 0.8660
+  7.0, 0.0
+  3.5, -0.8660
+}
+
+\pgfkeys{/pgf/data/new group=pns3-2-eig}
+\pgfdata[store in group=pns3-2-eig]{
+  x, y
+  0.0, 0.0
+  3.5, 0.8660
+  7.0, 0.0
+  3.5, -0.8660
+}
+
+\pgfkeys{/stored graphs/pns3-3/.cd,
+  x min/.initial=-2.0,
+  x max/.initial=2.0,
+  y min/.initial=-1.5,
+  y max/.initial=2.0,
+  graph code/.code={
+    \node (v0) at (1.0, 2.0) {};
+    \node (v1) at (2.0, 1.0) {};
+    \node (v2) at (-2.0, 0.0) {};
+    \node (v3) at (-1.0, 1.0) {};
+    \node (v4) at (0.0, 0.0) {};
+    \node (v5) at (0.5, -1.5) {};
+	\node (v6) at (1.5, -0.5) {};
+	\node (v7) at (-1.7,-1.5) {};
+
+    \graph {
+      (v0); (v1); (v2); (v3); (v4); (v5); (v6); (v7);
+      v0 <-> v1;
+      v0 -> { v2, v3, v4, v5, v6, v7 };
+      v1 -> { v2, v3, v4, v5, v6, v7 };
+      v2 <-> v3;
+	  v3 <-> v4;
+	  v4 <-> v2;
+      v2 -> { v5, v6, v7 };
+	  v3 -> { v5, v6, v7 };
+	  v4 -> { v5, v6, v7 };
+    };
+  },
+  ellipse/.cd,
+  x center/.initial=4.5,
+  y center/.initial=0,
+  x radius/.initial=1.677,
+  y radius/.initial=0.75
+}
+
+\pgfkeys{/pgf/data/new group=pns3-3-rnr}
+\pgfdata[store in group=pns3-3-rnr]{
+  x, y
+  0.0, 0.0
+  4.5, 0.8660
+  8.0, 0.0
+  4.5, -0.8660
+}
+
+\pgfkeys{/pgf/data/new group=pns3-3-eig}
+\pgfdata[store in group=pns3-3-eig]{
+  x, y
+  0.0, 0.0
+  4.5, 0.8660
+  8.0, 0.0
+  4.5, -0.8660
+}

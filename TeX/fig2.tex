@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\input{drawing}
+\input{all-data}
+\tikzset{/my/graphic options,defaults/.style={wide,node outline size=0.8,edge size=0.9,sep=0.7cm,graph width=5cm,rnr width=4cm,graph height=3.5cm,rnr height=4cm},tall preset/.style={/my/graphic options/defaults/.append style={tall,graph width=3.3cm,rnr width=3.6cm,graph height=2.6cm,rnr height=3.2cm}}}
+
+\begin{document}
+	\tikzset{/my/graphic options/tall preset}
+	\begin{tabular}{ccc}
+	\drawFigure{nrml}{}
+	&
+	\drawFigure{rest-nrml}{y min=-1,y max=1}
+	&
+	\drawFigure{pseu-nrml}{}
+	\\
+	\textbf{\small{Normal}}
+	&
+	\textbf{\small{Restricted-Normal}}
+	&
+	\textbf{\small{Pseudo-Normal}}
+	\end{tabular}
+\end{document}

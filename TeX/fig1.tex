@@ -1,0 +1,20 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\input{drawing}
+\input{all-data}
+\tikzset{/my/graphic options,defaults/.style={wide,node outline size=0.8,edge size=0.9,sep=0.7cm,graph width=5cm,rnr width=4cm,graph height=3.5cm,rnr height=4cm},tall preset/.style={/my/graphic options/defaults/.append style={tall,graph width=3.3cm,rnr width=3.6cm,graph height=2.6cm,rnr height=3.2cm}}}
+
+\begin{document}
+	\tikzset{/my/graphic options/tall preset}
+	\begin{tabular}{cccc}
+	\drawFigure{cycle}{x min=0.3,x max=2,y min=-1,y max=1}
+	&
+	\drawFigure{2imp-star}{x min=1.5,x max=2.5,y min=-0.5,y max=0.5}
+	&
+	\drawFigure{5reg-tourn}{x min=2.0,x max=3.0,y min=-2.0,y max=2.0}
+	&
+	\drawFigure{2exp-star}{x min=0.0,x max=6.0,y min=-0.5,y max=0.5}
+	\end{tabular}
+\end{document}
