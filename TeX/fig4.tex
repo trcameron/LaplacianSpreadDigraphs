@@ -7,5 +7,10 @@
 \tikzset{/my/graphic options,defaults/.style={wide,node outline size=0.8,edge size=0.9,sep=0.7cm,graph width=5cm,rnr width=4cm,graph height=3.5cm,rnr height=4cm},tall preset/.style={/my/graphic options/defaults/.append style={tall,graph width=3.3cm,rnr width=3.6cm,graph height=2.6cm,rnr height=3.2cm}}}
 
 \begin{document}
-	\drawFigure{large-spread}{}
+	\tikzset{/my/graphic options/tall preset}
+	\begin{tabular}{cc}
+	\drawFigure{pns3-2}{}
+	&
+	\drawFigure{pns3-3}{}
+	\end{tabular}
 \end{document}

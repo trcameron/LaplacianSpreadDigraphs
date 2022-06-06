@@ -15,6 +15,7 @@ fig:
 	@lualatex fig1.tex
 	@lualatex fig2.tex
 	@lualatex fig3.tex
+	@lualatex fig4.tex
 	
 polygonal:
 	@lualatex polygonal_vals6.tex
